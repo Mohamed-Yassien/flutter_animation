@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_anim/first_screen.dart';
+import 'package:flutter_anim/route_transition.dart';
 
 class ControlAnimateScreen extends StatefulWidget {
   const ControlAnimateScreen({Key? key}) : super(key: key);
@@ -18,15 +20,21 @@ class _ControlAnimateScreenState extends State<ControlAnimateScreen>
     animationController = AnimationController(
       vsync: this,
       duration: const Duration(
-        seconds: 60,
+        seconds: 20,
       ),
     );
     animation = Tween(begin: 0.0, end: 1.0).animate(animationController)
       ..addListener(() {
-        print(animation.value);
         setState(() {});
       });
-    animationController.forward();
+    animationController.forward().whenComplete(
+          () => Navigator.push(
+            context,
+            RouteTransition(
+              screen: const FirstScreen(),
+            ),
+          ),
+        );
   }
 
   @override

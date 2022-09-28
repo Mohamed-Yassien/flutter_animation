@@ -21,8 +21,10 @@ class RouteTransition extends PageRouteBuilder {
 
             return FadeTransition(
               opacity: animation,
-              child: SlideTransition(position: tween.animate(curvesAnimation),
-              child: child),
+              child: SlideTransition(
+                position: tween.animate(curvesAnimation),
+                child: child,
+              ),
             );
 
             // return Align(
